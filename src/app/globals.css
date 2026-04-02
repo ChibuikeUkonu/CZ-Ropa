@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .bg-primary    { background-color: var(--primary); }
+  .bg-secondary  { background-color: var(--secondary); }
+  .bg-accent     { background-color: var(--accent); }
+  .bg-light      { background-color: var(--light); }
+  .text-primary  { color: var(--primary); }
+  .text-secondary { color: var(--secondary); }
+  .text-accent   { color: var(--accent); }
+  .ring-primary  { ring-color: var(--primary); }
+}
+/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"); */
+
 :root {
+  --primary: #1a1a2e;
+  --secondary: #d4af37;
+  --accent: #e94560;
+  --light: #f8f5f2;
+  --dark: #0f0f1a;
+  --gray: #8a8a9e;
+  --transition: all 0.3s ease;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --border-radius: 8px;
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

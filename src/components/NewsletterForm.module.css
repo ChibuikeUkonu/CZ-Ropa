@@ -1,0 +1,58 @@
+.newsletterForm {
+  flex-direction: column;
+    display: flex;
+    
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.inputField {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.inputField::placeholder {
+  color: #999;
+}
+
+.submitBtn {
+  padding: 0.75rem 1.2rem;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background: #333;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.statusMessage {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.success {
+  color: #16a34a; /* green */
+}
+
+.error {
+  color: #dc2626; /* red */
+}
