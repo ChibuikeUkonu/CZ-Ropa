@@ -1,30 +1,40 @@
-# Styling Task TODO
+# Professional UI Redesign TODO
 
-## Overall Progress: 0/13 steps complete
+## Current Progress: 10/18 ✅
 
-1. [x] Update globals.css with Tailwind utility CSS vars
-2. [x] Style src/components/Hero.jsx
-3. [x] Style src/components/ProductCard.jsx
-4. [x] Style src/components/ProductGrid.jsx
-5. [x] Style src/components/Header.jsx
-6. [x] Style src/components/Footer.jsx
-7. [x] Style src/components/LoadingScreen.jsx
-8. [x] Style src/components/CartSidebar.jsx
-9. [x] Style src/components/PaymentModal.jsx
-10. [x] Style src/components/AuthModal.jsx
-11. [x] Fix src/app/page.js structure
-12. [x] Style src/app/products/page.js
-13. [x] Style src/app/checkout/page.js
+### Phase 1: Core Styles & Layout (1-3)
+- ✅ 1. Update src/app/globals.css with new neutral CSS variables, simplified utilities, and clean body styles
+- [ ] 2. Minor tweaks to src/app/layout.js if needed (fonts confirmed good)
+- ✅ 3. Update src/app/page.js to pass products to ProductGrid and add spacing
 
-## Overall Progress: 13/13 ✅ All components and pages styled!
+### Phase 2: Navigation & Header (4)
+- ✅ 4. Simplify src/components/Header.jsx: clean nav, remove excessive hovers/animations
 
-Run `npm run dev` to preview the luxury e-commerce app at http://localhost:3000
+### Phase 3: Hero & Key Sections (5-6)
+- ✅ 5. Redesign src/components/Hero.jsx: half-height, white bg, minimal CTAs
+- ✅ 6. Update src/app/products/page.js: consistent clean header
 
-## Next: Test with `npm run dev`
+### Phase 4: Products (7-8)
+- ✅ 7. Simplify src/components/ProductCard.jsx: flat cards, no lift effects
+- ✅ 8. Enhance src/components/ProductGrid.jsx: larger gaps, section header
 
-**Updated TODO.md created. Starting edits step-by-step.**
+### Phase 5: Content Sections (9-10)
+- [ ] 9. Clean src/components/AboutUsSection.jsx: light bg, no overlays
+- [ ] 10. Simplify src/components/ContactSection.jsx: light bg, minimal form/map
 
-**Step 1: Update globals.css** – Add Tailwind utilities for CSS vars.
+### Phase 6: Footer & Forms (11-13)
+- ✅ 11. Clean src/components/Footer.jsx: simple dark footer
+- ✅ 12. Simplify src/components/NewsletterForm.jsx: minimal clean form
+- ✅ 13. Review/remove busy popups: src/components/Newsletterpopup.jsx, LoadingScreen.jsx
 
-<xai:function_call name="edit_file">
-<parameter name="path">src/app/globals.css
+### Phase 7: Modals & Other Components (14-16)
+- [ ] 14. Clean AuthModal, CartSidebar, PaymentModal if open (minimal styles)
+- [ ] 15. Update SignupPage/LoginPage: consistent clean forms
+- [ ] 16. Minor: LoadingScreen.jsx subtle fade only
+
+### Phase 8: Testing & Completion (17-18)
+- [ ] 17. Test responsive: `npm run dev`, check mobile/tablet/desktop
+- [ ] 18. Final review, remove TODO.md, attempt_completion
+
+**Next step: #9 AboutUsSection.jsx**
+

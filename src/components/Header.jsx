@@ -43,20 +43,18 @@ const Header = () => {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-light/95 backdrop-blur-xl border-b border-light/50 shadow-xl">
+    <header className="sticky top-0 z-50 bg-white/95 border-b border-gray-200 shadow-sm-custom backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group" onClick={closeMobileMenu}>
-            <i className="fas fa-crown text-2xl text-secondary group-hover:rotate-12 transition-transform duration-300"></i>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              C&Z <span className="text-secondary">Ropa</span>
-            </span>
+            <i className="fas fa-crown text-2xl text-primary"></i>
+            <span className="text-2xl font-bold text-primary">C&amp;Z Ropa</span>
           </Link>
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2 rounded-xl bg-light/50 hover:bg-light hover:shadow-md transition-all duration-300 text-primary"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors text-primary"
             onClick={toggleMobileMenu}
           >
             <i className={`fas text-xl ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
@@ -65,9 +63,8 @@ const Header = () => {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center space-x-8">
             <ul className="flex items-center space-x-8 text-lg font-medium">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/products">Collections</Link></li>
-              <li><Link href="#">features</Link></li>
+              <li><Link href="/" className="text-primary hover:text-secondary transition-colors px-3 py-2 rounded-md">Home</Link></li>
+              <li><Link href="/products" className="text-primary hover:text-secondary transition-colors px-3 py-2 rounded-md">Collections</Link></li>
               <li>
   <button
     onClick={() => {

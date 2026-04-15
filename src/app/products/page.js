@@ -8,13 +8,13 @@ export default function ProductsPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-b from-light to-light/50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="py-24 lg:py-32 bg-gradient-to-b from-light to-white">
+        <div className="container">
           <div className="text-center mb-20">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-gray-900 to-primary bg-clip-text text-transparent mb-6 leading-tight">
               Our Collection
             </h1>
-            <p className="text-xl md:text-2xl text-primary/80 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray max-w-2xl mx-auto leading-relaxed">
               Discover timeless pieces crafted for the modern elite. Luxury meets sophistication.
             </p>
           </div>

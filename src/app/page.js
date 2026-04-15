@@ -29,7 +29,13 @@ const HomePage = () => {
     <>
       <Header/>
       <Hero />
-      <ProductGrid products={[]} />
+      <section className="py-24">
+        <div className="container text-center mb-20">
+          <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-6">Featured Collection</h2>
+          <p className="text-xl text-gray max-w-2xl mx-auto">Discover our curated selection of premium products</p>
+        </div>
+        <ProductGrid products={products} />
+      </section>
       <AboutUsSection/>
       <ContactSection />
       <NewsletterForm/>

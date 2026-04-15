@@ -1,36 +1,50 @@
 @import "tailwindcss";
 
 @layer utilities {
-  .bg-primary    { background-color: var(--primary); }
-  .bg-secondary  { background-color: var(--secondary); }
-  .bg-accent     { background-color: var(--accent); }
-  .bg-light      { background-color: var(--light); }
-  .text-primary  { color: var(--primary); }
+  .bg-primary { background-color: var(--primary); }
+  .bg-secondary { background-color: var(--secondary); }
+  .bg-accent { background-color: var(--accent); }
+  .text-primary { color: var(--primary); }
   .text-secondary { color: var(--secondary); }
-  .text-accent   { color: var(--accent); }
-  .ring-primary  { ring-color: var(--primary); }
+  .text-accent { color: var(--accent); }
+  .ring-primary { ring-color: var(--primary); }
+  .shadow-sm-custom { box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); }
+  .shadow-md-custom { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
 }
-/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"); */
 
 :root {
-  --primary: #1a1a2e;
-  --secondary: #d4af37;
-  --accent: #e94560;
-  --light: #f8f5f2;
-  --dark: #0f0f1a;
-  --gray: #8a8a9e;
-  --transition: all 0.3s ease;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --border-radius: 8px;
+  --primary: #0f172a; /* deep slate */
+  --secondary: #6366f1; /* indigo */
+  --accent: #10b981; /* emerald green */
+  --light: #f8fafc; /* light slate */
+  --dark: #111827;
+  --gray: #64748b;
+  --transition: all 0.2s ease-in-out;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --border-radius: 12px;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1e293b;
+  --border: #e2e8f0;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
   background-color: var(--background);
   color: var(--foreground);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+
+@media (min-width: 1024px) {
+  .container { padding: 0 2rem; }
 }

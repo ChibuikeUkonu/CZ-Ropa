@@ -1,57 +1,42 @@
- 'use client';
+'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage on page load
-  useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) setUser(JSON.parse(savedUser));
-  }, []);
+  const signup = async (formData) => {
+    try {
+      const res = await fetch('/api/newsletter/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-  // Signup new user
-  const signup = ({ name, email, password, phone }) => {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const data = await res.json();
 
-    // Check if email already exists
-    if (users.some(u => u.email === email)) {
-      return { success: false, message: 'Email already registered' };
+      if (data.success) {
+        // Optionally auto-login after signup
+        setUser(data.user);
+        return { success: true };
+      } else {
+        return { success: false, message: data.message };
+      }
+    } catch (error) {
+      console.error('Signup request failed:', error);
+      return { success: false, message: 'Network error. Please try again.' };
     }
-
-    const newUser = { name, email, password, phone, initials: name.split(' ').map(n => n[0]).join('') };
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    localStorage.setItem('user', JSON.stringify(newUser));
-    setUser(newUser);
-    return { success: true };
   };
 
-  // Login existing user
-  const login = ({ email, password }) => {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const foundUser = users.find(u => u.email === email && u.password === password);
-    if (foundUser) {
-      localStorage.setItem('user', JSON.stringify(foundUser));
-      setUser(foundUser);
-      return { success: true };
-    }
-    return { success: false, message: 'Invalid credentials' };
-  };
-
-  const logout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
-  };
+  // Other auth methods (login, logout, etc.)
 
   return (
-    <AuthContext.Provider value={{ user, signup, login, logout }}>
+    <AuthContext.Provider value={{ user, signup }}>
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export const useAuth = () => useContext(AuthContext);

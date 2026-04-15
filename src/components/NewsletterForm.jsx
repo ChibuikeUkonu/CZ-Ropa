@@ -1,4 +1,3 @@
-// NewsletterForm.jsx
 "use client";
 import { useState } from "react";
 
@@ -13,11 +12,22 @@ export default function NewsletterForm() {
     setStatus("");
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const res = await fetch('/api/newsletter/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      setStatus("Thank you for subscribing! Stay stylish.");
-      setEmail("");
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus("Thank you for subscribing!");
+        setEmail("");
+      } else {
+        setStatus(data.error || "Subscription failed. Please try again.");
+      }
     } catch (error) {
       setStatus("Subscription failed. Please try again.");
     } finally {
@@ -26,48 +36,42 @@ export default function NewsletterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
-      {/* Heading */}
-      <h1 className="text-1xl font-bold text-center text-gray-900">
-        Subscribe to our Newsletter
-      </h1>
-
-      {/* Attractive write-up */}
-      <p className="text-center text-gray-600 text-sm">
-        Be the first to discover our latest collections, exclusive deals, and style tips curated just for you. Elevate your wardrobe and stay ahead in fashion!
-      </p>
-
-      {/* Message area with reserved space */}
-      <div className="min-h-[1.5rem] text-center text-sm">
-        {status && (
-          <span
-            className={`${
-              status.includes("failed") ? "text-red-600" : "text-green-600"
-            }`}
-          >
-            {status}
-          </span>
-        )}
+    <section className="py-20 bg-gradient-to-b from-light to-white">
+      <div className="container">
+        <div className="max-w-md mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+            Stay Updated
+          </h2>
+          <p className="text-lg text-gray mb-8 leading-relaxed">
+            Subscribe to our newsletter for exclusive offers and the latest trends.
+          </p>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                required
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 bg-white text-primary placeholder-gray-500 transition-all duration-200"
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-gray-900 focus:ring-2 focus:ring-primary/50 transition-all duration-200 shadow-sm-custom disabled:opacity-50 whitespace-nowrap"
+              >
+                {loading ? "Subscribing..." : "Subscribe"}
+              </button>
+            </div>
+            {status && (
+              <p className={`text-sm mt-2 text-center ${status.includes("Thank") ? "text-green-600" : "text-red-600"}`}>
+                {status}
+              </p>
+            )}
+          </form>
+        </div>
       </div>
-
-      {/* Email input */}
-      <input
-        type="email"
-        required
-        placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
-      />
-
-      {/* Subscribe button */}
-      <button
-        type="submit"
-        disabled={loading}
-        className="bg-gray-500 text-white py-2 rounded hover:bg-gray-600 transition-colors disabled:bg-gray-400"
-      >
-        {loading ? "Submitting..." : "Subscribe"}
-      </button>
-    </form>
+    </section>
   );
 }
+
