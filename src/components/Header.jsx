@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { CartContext } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';
-
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -95,16 +94,32 @@ const Header = () => {
             {/* Auth button with dropdown */}
             <div className="relative" ref={userMenuRef}>
               <button
-                onClick={handleIconClick}
-                className="relative p-2 rounded-xl bg-light/50 hover:bg-light hover:shadow-md transition-all duration-300"
-              >
-                <i className={`fas text-xl ${user ? 'fa-user-check text-secondary' : 'fa-user text-primary'}`}></i>
-                {user && (
-                  <span className="absolute -top-0 -right-5 bg-accent text-light text-xs rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold animate-pulse">
-                    {user.initials || 'U'}
-                  </span>
-                )}
-              </button>
+  onClick={handleIconClick}
+  className="relative p-2 rounded-xl bg-light/50 hover:bg-light hover:shadow-md transition-all duration-300 flex items-center justify-center"
+>
+  {user ? (
+    user.image ? (
+      <img
+        src={user.image}
+        alt="User"
+        className="w-9 h-9 rounded-full object-cover"
+      />
+    ) : (
+      <div className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+        {user.name
+          ? user.name
+              .split(' ')
+              .map(n => n[0])
+              .join('')
+              .toUpperCase()
+              .slice(0, 2)
+          : user.email?.[0].toUpperCase()}
+      </div>
+    )
+  ) : (
+    <i className="fas fa-user text-xl text-primary"></i>
+  )}
+</button>
 
               {/* Dropdown menu for logged in user */}
               {user && isUserMenuOpen && (

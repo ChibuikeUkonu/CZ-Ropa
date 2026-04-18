@@ -12,7 +12,7 @@ export default function NewsletterForm() {
     setStatus("");
 
     try {
-      const res = await fetch('/api/newsletter/signup', {
+      const res = await fetch('http://localhost:5000/api/newsletter/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
